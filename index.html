@@ -17,7 +17,7 @@
 
 <body>
 
-    <div class="post">
+    <div class="biscuits">
     </div>
 
 
@@ -35,7 +35,9 @@
             console.log(data);
             for (var i = 0; i < data.length; i++) {
                 if(data[i].biscuit_name != "") { 
-                    document.querySelector('.post').append(`${data[i].biscuit_name} - ${data[i].overall_perc}`);
+                    var e = document.createElement('div');
+                    e.innerHTML = `<p>${data[i].biscuit_name} - ${data[i].overall_perc}</p>`;
+                    document.querySelector('.biscuits').appendChild(e);
                     console.log(data[i].biscuit_name);
                 }
             }
