@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>The Hobsnobs - Biscuit Reviews</title>
+    <meta name="description" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <meta property="og:image" content="" />
+
+</head>
+
+<body>
+
+    <div class="post">
+    </div>
+
+
+
+    <script src="js/tabletop.min.js"></script>
+    <script src="js/site.js"></script>
+
+    <script>
+        function init() {
+            Tabletop.init( { key: '1pt_A3Y9SOAcA-s4LIFDyxtyo1NvjM0gnQ9R3Jnmlwws',
+            callback: showInfo,
+            simpleSheet: true } )
+        }
+        function showInfo(data, tabletop) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                if(data[i].biscuit_name != "") { 
+                    document.querySelector('.post').append(`${data[i].biscuit_name} - ${data[i].overall_perc}`);
+                    console.log(data[i].biscuit_name);
+                }
+            }
+        }
+        window.addEventListener('DOMContentLoaded', init)
+
+    </script>
+</body>
+</html>
