@@ -17,33 +17,21 @@
 
 <body>
 
-    <div class="biscuits">
-    </div>
+    <table class="biscuit-leaderboard">
+        <thead>
+            <th>Buiscuit</th>
+            <th class="taste" data-orderby="taste">Taste</th>
+            <th class="texture" data-orderby="texture">Texture</th>
+            <th class="health" data-orderby="health">Relative Healthiness</th>
+            <th class="overall" data-orderby="overall_perc">Total Score</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
 
 
     <script src="js/tabletop.min.js"></script>
     <script src="js/site.js"></script>
-
-    <script>
-        function init() {
-            Tabletop.init( { key: '1pt_A3Y9SOAcA-s4LIFDyxtyo1NvjM0gnQ9R3Jnmlwws',
-            callback: showInfo,
-            simpleSheet: true } )
-        }
-        function showInfo(data, tabletop) {
-            console.log(data);
-            for (var i = 0; i < data.length; i++) {
-                if(data[i].biscuit_name != "") { 
-                    var e = document.createElement('div');
-                    e.innerHTML = `<p>${data[i].biscuit_name} - ${data[i].overall_perc}</p>`;
-                    document.querySelector('.biscuits').appendChild(e);
-                    console.log(data[i].biscuit_name);
-                }
-            }
-        }
-        window.addEventListener('DOMContentLoaded', init)
-
-    </script>
 </body>
 </html>
