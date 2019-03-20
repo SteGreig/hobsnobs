@@ -9,6 +9,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="css/critical.css">
     <link rel="stylesheet" href="css/main.css">
 
     <meta property="og:image" content="" />
@@ -17,17 +18,40 @@
 
 <body>
 
-    <table class="biscuit-leaderboard">
-        <thead>
-            <th>Buiscuit</th>
-            <th class="taste" data-orderby="taste">Taste</th>
-            <th class="texture" data-orderby="texture">Texture</th>
-            <th class="health" data-orderby="health">Relative Healthiness</th>
-            <th class="overall" data-orderby="overall_perc">Total Score</th>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <header>
+        <img src="images/logo-hobsnobs.png" alt="The Hobsnobs logo">
+    </header>
+
+    <section class="intro-section">
+        <h1 class="hero-headline">On a mission to find the best biscuit in the world.</h1>
+        <p class="hero-tagline">Follow the journey on Instagram <a target="_blank" href="https://www.instagram.com/thehobsnobs/">@thehobsnobs</a></p>
+
+        <h3>Scores weighted as follows:</h3>
+        <ul>
+            <li>🤤 Taste: 50%</li>
+            <li>🍪 Texture: 30%</li>
+            <li>🚑 Relative Healthiness: 20%</li>
+        </ul>
+    </section>
+
+    <section class="leaderboard-section">
+        <div>
+            <table class="biscuit-leaderboard">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th class="taste" data-orderby="taste">Taste</th>
+                        <th class="texture" data-orderby="texture">Texture</th>
+                        <th class="health" data-orderby="health">Relative Healthiness</th>
+                        <th class="overall" data-orderby="overall_perc">Total Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
 
 

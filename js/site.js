@@ -20,17 +20,18 @@ function showInfo(data, tabletop) {
 
         for (var i = 0; i < ordered.length; i++) {
             if(data[i].biscuit_name != "") { 
-                const biscuitTable = document.createElement('tr');
-                biscuitTable.innerHTML =
+                const biscuitItem = document.createElement('tr');
+                biscuitItem.innerHTML =
                 `
-                    <td><span class="brand">${ordered[i].brand}</span> <span class="biscuit-name">${ordered[i].biscuit_name}</span></td>
-                    <td>${ordered[i].taste}</td>
-                    <td>${ordered[i].texture}</td>
-                    <td>${ordered[i].health}</td>
-                    <td>${ordered[i].overall_perc}</td>
+                    <td>${i+1}</td>
+                    <td class="bl-biscuit"><span class="bl-brand">${ordered[i].brand}</span> <span class="bl-biscuit-name">${ordered[i].biscuit_name}</span></td>
+                    <td class="bl-taste">🤤 ${ordered[i].taste}</td>
+                    <td class="bl-texture">🍪 ${ordered[i].texture}</td>
+                    <td class="bl-health">🚑 ${ordered[i].health}</td>
+                    <td class="bl-total">📈 ${ordered[i].overall_perc}</td>
                 `;
 
-                document.querySelector('.biscuit-leaderboard tbody').appendChild(biscuitTable);
+                document.querySelector('.biscuit-leaderboard tbody').appendChild(biscuitItem);
             }
         }
     }
