@@ -23,7 +23,7 @@ function showInfo(data, tabletop) {
                 const biscuitItem = document.createElement('tr');
                 biscuitItem.innerHTML =
                 `
-                    <td>${i+1}</td>
+                    <td class="bl-num">${i+1}</td>
                     <td class="bl-biscuit"><span class="bl-brand">${ordered[i].brand}</span> <span class="bl-biscuit-name">${ordered[i].biscuit_name}</span></td>
                     <td class="bl-taste">🤤 ${ordered[i].taste}</td>
                     <td class="bl-texture">🍪 ${ordered[i].texture}</td>

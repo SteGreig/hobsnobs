@@ -10,7 +10,13 @@
     > div {
         background: #fff;
         box-shadow: 0 0 20px #e8f0f3;
-        padding: 30px;
+        padding: 0;
+        width: 100%;
+
+        @include bp750 {
+            padding: 30px;
+            width: auto;
+        }
     }
 
     h1 {
@@ -27,25 +33,59 @@
     }
 
     tr {
-        border: 1px solid #e8ebf2;
+        border-bottom: 1px solid #e8ebf2;
         transition: .3s;
         background: #fff;
+
+        @include bp750 {
+            border: 1px solid #e8ebf2;
+        }
     }
 
     tbody tr:hover {
-        transform: scale(1.03);
-        box-shadow: 0 2px 15px rgb(224, 228, 228);
+        @include bp750 {
+            transform: scale(1.03);
+            box-shadow: 0 2px 15px rgb(224, 228, 228);
+        }
     }
+}
 
-    td, th {
-        padding: 18px 25px;
+.biscuit-leaderboard {
+    width: 100%;
+
+    @include bp750 {
+        width: auto;
+    }
+}
+
+
+/* Table Headers
+---------------------------------- */
+.bl-thead {
+    tr {
+        @include flexbox;
+        width: 100%;
+    
+        @include bp750 {
+            display: table-row;
+        }
     }
 
     th {
         background: $lightGrey;
         transition: .3s;
-        text-align: left;
+        text-align: center;
         font-weight: 600;
+        line-height: 1.3;
+        display: inline-block;
+        @include flex(auto);
+        padding: 10px;
+
+        @include bp750 {
+            text-align: left;
+            display: table-cell;
+            padding: 18px 25px;
+        }
     }
 
     th:not(:nth-of-type(-n+2)) {
@@ -56,28 +96,90 @@
         background: darken($lightGrey, 3%);
     }
 
-    td:first-child {
-        background: #f9fcfd;
-        padding: 18px 0px;
-        text-align: center;
-        color: #b7bfc1;
+    .th-num {
+        display: none;
+    
+        @include bp750 {
+            display: table-cell;
+        }
+    }
+    
+    .th-biscuits {
+        display: none;
+    
+        @include bp750 {
+            display: table-cell;
+        }
     }
 }
 
-.bl-brand {
-    display: block;
-    font-size: 1.5rem;
-    line-height: 1.2;
-    color: #a1acbc;
-}
 
-.bl-biscuit-name {
-    font-size: 1.65rem;
-    line-height: 1.2;
-    font-weight: 600;
-}
+/* Table Body
+---------------------------------- */
+.bl-tbody {
+    tr {
+        @include flexbox;
 
-.bl-total {
-    font-weight: 600;
-    font-size: 1.8rem;
+        @include bp750 {
+            display: table-row;
+        }
+    }
+
+    td {
+        width: auto;
+        display: inline-block;
+        padding: 15px 10px;
+        text-align: center;
+        @include flex(1);
+
+        @include bp750 {
+            display: table-cell;
+            padding: 18px 25px;
+            text-align: left;
+        }
+    }
+
+    .bl-num {
+        display: none;
+    
+        @include bp750 {
+            display: table-cell;
+            background: #f9fcfd;
+            padding: 18px 0px;
+            text-align: center;
+            color: #b7bfc1;
+        }
+    }
+
+    .bl-biscuit {
+        @include flex(5);
+        padding: 15px 10px;
+        line-height: 1.3;
+        text-align: left;
+
+        @include bp750 {
+            padding: 18px 25px;
+        }
+    }
+    
+    .bl-brand {
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        color: #a1acbc;
+    }
+    
+    .bl-biscuit-name {
+        font-size: 1.65rem;
+        line-height: 1.2;
+        font-weight: 600;
+    }
+    
+    .bl-total {
+        font-weight: 600;
+
+        @include bp750 {
+            font-size: 1.8rem;
+        }
+    }
 }
