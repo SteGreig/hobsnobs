@@ -4,13 +4,23 @@
 
 .intro-section {
     text-align: center;
-    padding: 50px 20px 60px;
+    padding: 100px 20px 60px;
     max-width: 380px;
     margin: 0 auto;
 
+    @include bp750 {
+        padding-top: 70px;
+        max-width: 500px;
+    }
+
     h3 {
         font-weight: 600;
-        margin-top: 30px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        padding: 5px 10px;
+        background: darken($lightGrey, 3%);
+        display: inline-block;
+        font-size: 1.5rem;
     }
 
     ul {
@@ -19,16 +29,49 @@
 
     a {
         color: $orange;
+
+        &:hover {
+            background: #f5efe9;
+        }
     }
 }
 
 .hero-headline {
-    font-size: 3rem;
+    font-size: 2.8rem;
     line-height: 1.1;
     margin-bottom: 10px;
-    font-weight: 400;
+    font-weight: 900;
+
+    @include bp750 {
+        font-size: 4rem;
+    }
 }
 
 .hero-tagline {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    font-weight: 300;
+
+    @include bp750 {
+        font-size: 2.2rem;
+    }
+}
+
+.scores-key {
+    li {
+        font-size: 2rem;
+        padding: 2px 0;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+    }
+
+    span {
+        font-size: 3rem;
+        margin-right: 10px;
+    }
+
+    strong {
+        margin-left: 6px;
+        font-weight: 600;
+    }
 }

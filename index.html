@@ -19,7 +19,7 @@
 <body>
 
     <header>
-        <img src="images/logo-hobsnobs.png" alt="The Hobsnobs logo">
+        <a class="site-logo" href="/"><img src="images/logo-hobsnobs.png" alt="The Hobsnobs logo"></a>
     </header>
 
 
@@ -28,25 +28,26 @@
         <p class="hero-tagline">Follow the journey on Instagram <a target="_blank" href="https://www.instagram.com/thehobsnobs/">@thehobsnobs</a></p>
 
         <h3>Scores weighted as follows:</h3>
-        <ul>
-            <li>🤤 Taste: 50%</li>
-            <li>🍪 Texture: 30%</li>
-            <li>🚑 Relative Healthiness: 20%</li>
+        <ul class="scores-key">
+            <li><span>🤤</span> Taste: <strong>50%</strong></li>
+            <li><span>🍪</span> Texture: <strong>30%</strong></li>
+            <li><span>🚑</span> Relative Healthiness: <strong>20%</strong></li>
         </ul>
     </section>
 
 
     <section class="leaderboard-section">
         <div>
+            <span class="orderby-text">Order by:</span>
             <table class="biscuit-leaderboard">
                 <thead class="bl-thead">
                     <tr>
                         <th class="th-num">#</th>
                         <th class="th-biscuits">Biscuits rated so far</th>
-                        <th class="th-taste" data-orderby="taste">Taste</th>
+                        <th class="th-taste" data-orderby="taste"> Taste</th>
                         <th class="th-texture" data-orderby="texture">Texture</th>
                         <th class="th-health" data-orderby="health">Relative Healthiness</th>
-                        <th class="th-overall" data-orderby="overall_perc">Total Score</th>
+                        <th class="th-overall order-active" data-orderby="overall_perc">Total Score</th>
                     </tr>
                 </thead>
                 <tbody class="bl-tbody">
@@ -54,7 +55,6 @@
             </table>
         </div>
     </section>
-
 
 
     <script src="js/tabletop.min.js"></script>

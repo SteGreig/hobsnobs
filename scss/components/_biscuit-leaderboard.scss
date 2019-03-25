@@ -9,12 +9,12 @@
 
     > div {
         background: #fff;
-        box-shadow: 0 0 20px #e8f0f3;
         padding: 0;
         width: 100%;
 
         @include bp750 {
             padding: 30px;
+            box-shadow: 0 0 20px #e8f0f3;
             width: auto;
         }
     }
@@ -33,7 +33,7 @@
     }
 
     tr {
-        border-bottom: 1px solid #e8ebf2;
+        border-top: 1px solid #e8ebf2;
         transition: .3s;
         background: #fff;
 
@@ -61,30 +61,74 @@
 
 /* Table Headers
 ---------------------------------- */
+.orderby-text {
+    padding: 15px 15px 5px;
+    font-size: 1.2rem;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+
+    @include bp750 {
+        display: none;
+    }
+}
 .bl-thead {
     tr {
         @include flexbox;
         width: 100%;
+        margin-bottom: 20px;
+        border: none;
+        padding: 0 20px;
     
         @include bp750 {
+            border: 1px solid #e8ebf2;
             display: table-row;
+            margin-bottom: 0;
+            padding: 0;
         }
     }
 
     th {
-        background: $lightGrey;
+        background: darken($lightGrey,3%);
         transition: .3s;
         text-align: center;
         font-weight: 600;
         line-height: 1.3;
         display: inline-block;
-        @include flex(auto);
-        padding: 10px;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        @include flex(1);
+        padding: 20px 10px;
+        border-right: 1px solid rgba(#000,.05);
+
+        &:last-child {
+            border: none;
+        }
+
+        &.order-active,
+        &.order-active.order-active:hover {
+            background: darken($lightGrey,6%);
+        }
+        
+        @include bp600 {
+            @include flex(auto);
+        }
 
         @include bp750 {
-            text-align: left;
+            background: $lightGrey;
             display: table-cell;
             padding: 18px 25px;
+            border: none;
+
+            &.order-active,
+            &.order-active.order-active:hover {
+                background: darken($lightGrey,5%);
+            }
+        }
+
+        @include bp1000 {
+            text-align: left;
         }
     }
 
@@ -135,6 +179,9 @@
         @include bp750 {
             display: table-cell;
             padding: 18px 25px;
+        }
+
+        @include bp1000 {
             text-align: left;
         }
     }
@@ -142,7 +189,7 @@
     .bl-num {
         display: none;
     
-        @include bp750 {
+        @include bp375 {
             display: table-cell;
             background: #f9fcfd;
             padding: 18px 0px;
@@ -180,6 +227,14 @@
 
         @include bp750 {
             font-size: 1.8rem;
+        }
+    }
+
+    .bl-emoji {
+        display: block;
+
+        @include bp1000 {
+            display: inline;
         }
     }
 }

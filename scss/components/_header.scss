@@ -4,6 +4,12 @@
 
 header {
     background: #fff;
-    height: 95px;
     padding: 15px;
+    height: 80px;
+}
+
+.site-logo {
+    img {
+        max-width: 130px;
+    }
 }
