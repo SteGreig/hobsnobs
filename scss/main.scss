@@ -10,6 +10,8 @@ sites style will go.
 
 // Import the non-critical CSS
 
+@import
+    'base/_font-face';
 
 @import
     'components/_header',
