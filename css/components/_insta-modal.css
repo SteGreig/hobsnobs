@@ -1,0 +1,15 @@
+/*---------------------------------------------------------------
+    Insta Modal
+--------------------------------------------------------------- */
+.insta-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: .4s;
+  -o-transition: .4s;
+  transition: .4s; }
+  .insta-modal.active {
+    opacity: 1;
+    visibility: visible; }

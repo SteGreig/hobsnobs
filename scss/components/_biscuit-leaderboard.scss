@@ -36,6 +36,7 @@
         border-top: 1px solid #e8ebf2;
         transition: .3s;
         background: #fff;
+        cursor: pointer;
 
         @include bp750 {
             border: 1px solid #e8ebf2;

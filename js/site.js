@@ -21,10 +21,11 @@ function showInfo(data, tabletop) {
         for (var i = 0; i < ordered.length; i++) {
             if(data[i].biscuit_name != "") { 
                 const biscuitItem = document.createElement('tr');
+                biscuitItem.classList.add('biscuit-item');
                 biscuitItem.innerHTML =
                 `
                     <td class="bl-num">${i+1}</td>
-                    <td class="bl-biscuit"><span class="bl-brand">${ordered[i].brand}</span> <span class="bl-biscuit-name">${ordered[i].biscuit_name}</span></td>
+                    <td class="bl-biscuit" data-insta="${ordered[i].insta}"><span class="bl-brand">${ordered[i].brand}</span> <span class="bl-biscuit-name">${ordered[i].biscuit_name}</span></td>
                     <td class="bl-taste"><span class="bl-emoji">🤤</span> ${ordered[i].taste}</td>
                     <td class="bl-texture"><span class="bl-emoji">🍪</span> ${ordered[i].texture}</td>
                     <td class="bl-health"><span class="bl-emoji">🚑</span> ${ordered[i].health}</td>
@@ -42,9 +43,52 @@ function showInfo(data, tabletop) {
         el.classList.add('order-active');
     }
 
+    function showInsta(e) {
+        document.querySelector('body').classList.add('fixed');
+        document.querySelector('.insta-modal').classList.add('active');
+
+        if(e.target.parentElement.classList.contains('biscuit-item')) {
+            var insta = e.target.parentElement.children[1].dataset.insta
+        } else {
+            var insta = e.target.parentElement.parentElement.children[1].dataset.insta
+        }
+
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://api.instagram.com/oembed/?url='+insta+'&amp;maxwidth=450&amp;hidecaption=true&amp;omitscript=false', true);
+
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+                // Success!
+                var resp = request.responseText;
+                var resp = JSON.parse(resp);
+                var respHTML = resp.html;
+                document.querySelector('.insta-modal > div').innerHTML = respHTML;
+                document.querySelector('.insta-modal > blockquote').innerHTML = resp.title;
+                window.instgrm.Embeds.process();
+            } else {
+                // We reached our target server, but it returned an error
+            }
+        };
+
+        request.onerror = function() {
+            // There was a connection error of some sort
+        };
+
+        request.send();
+    }
+
     const tableHeaders = document.querySelectorAll('.biscuit-leaderboard th');
     tableHeaders.forEach(th => th.addEventListener('click', sortTable));
-    tableHeaders.forEach(el => el.addEventListener('click', e => setOrderActive(el)))
+    tableHeaders.forEach(el => el.addEventListener('click', e => setOrderActive(el)));
+
+    document.querySelector('.bl-tbody').addEventListener('click', showInsta);
+
+    document.querySelector('.modal-close').addEventListener('click', function() {
+        document.querySelector('.insta-modal').classList.remove('active');
+        document.querySelector('.insta-modal > div').innerHTML = "";
+        document.querySelector('.insta-modal > blockquote').innerHTML = "";
+        document.querySelector('body').classList.remove('fixed');
+    });
 
     const ordered = data.sort((a, b) => a.overall_perc < b.overall_perc ? 1 : -1);
     buildTable(ordered);
