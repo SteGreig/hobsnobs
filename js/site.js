@@ -46,6 +46,7 @@ function showInfo(data, tabletop) {
     function showInsta(e) {
         document.querySelector('body').classList.add('fixed');
         document.querySelector('.insta-modal').classList.add('active');
+        document.querySelector('.modal-close').classList.add('active');
 
         if(e.target.parentElement.classList.contains('biscuit-item')) {
             var insta = e.target.parentElement.children[1].dataset.insta
@@ -62,8 +63,8 @@ function showInfo(data, tabletop) {
                 var resp = request.responseText;
                 var resp = JSON.parse(resp);
                 var respHTML = resp.html;
-                document.querySelector('.insta-modal > div').innerHTML = respHTML;
-                document.querySelector('.insta-modal > blockquote').innerHTML = resp.title;
+                document.querySelector('.insta-modal .ins-post').innerHTML = respHTML;
+                document.querySelector('.insta-modal .ins-review').innerHTML = resp.title;
                 window.instgrm.Embeds.process();
             } else {
                 // We reached our target server, but it returned an error
@@ -85,9 +86,10 @@ function showInfo(data, tabletop) {
 
     document.querySelector('.modal-close').addEventListener('click', function() {
         document.querySelector('.insta-modal').classList.remove('active');
-        document.querySelector('.insta-modal > div').innerHTML = "";
-        document.querySelector('.insta-modal > blockquote').innerHTML = "";
+        document.querySelector('.insta-modal .ins-post').innerHTML = "";
+        document.querySelector('.insta-modal .ins-review').innerHTML = "";
         document.querySelector('body').classList.remove('fixed');
+        document.querySelector('.modal-close').classList.remove('active');
     });
 
     const ordered = data.sort((a, b) => a.overall_perc < b.overall_perc ? 1 : -1);

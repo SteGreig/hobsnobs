@@ -11,14 +11,9 @@
     transition: .4s;
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
     transform: translateX(-50%);
     z-index: 100;
     background: rgba(#000,.8);
-    @include flexbox;
-    @include flex-wrap(wrap);
-    @include justify-content(center);
-    padding: 30px 10px 10px;
 
     @include bp600 {
         padding: 30px;
@@ -27,6 +22,19 @@
     &.active {
         opacity: 1;
         visibility: visible;
+    }
+
+    > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        @include flexbox;
+        @include flex-wrap(wrap);
+        @include justify-content(center);
+        padding: 30px 10px 10px;
     }
 
     .ins-post {
@@ -69,6 +77,11 @@
     cursor: pointer;
     transition: .3s;
     z-index: 150;
+    display: none;
+
+    &.active {
+        display: block;
+    }
 
     @include bp600 {
         top: 10px;
