@@ -47,6 +47,16 @@
         @include bp750 {
             transform: scale(1.03);
             box-shadow: 0 2px 15px rgb(224, 228, 228);
+            z-index: 100;
+
+            td.bl-num {
+                background: #b5d3da;
+                color: #fff;
+            }
+
+            .bl-review {
+                opacity: 1;
+            }
         }
     }
 }
@@ -110,6 +120,7 @@
         &.order-active,
         &.order-active.order-active:hover {
             background: darken($lightGrey,6%);
+            box-shadow: inset 2px 2px 10px rgba(0,0,0,.04);
         }
         
         @include bp600 {
@@ -180,6 +191,7 @@
         @include bp750 {
             display: table-cell;
             padding: 18px 25px;
+            border-top: 1px solid #e8ebf2;
         }
 
         @include bp1000 {
@@ -192,9 +204,17 @@
     
         @include bp375 {
             display: table-cell;
-            background: #f9fcfd;
-            padding: 18px 0px;
+            background: #e0ebee;
+            max-width: 24px;
+            padding: 12px 0px;
             text-align: center;
+            color: #83a4ad;
+        }
+
+        @include bp750 {
+            padding: 18px 0px;
+            max-width: none;
+            background: #f9fcfd;
             color: #b7bfc1;
         }
     }
@@ -221,6 +241,26 @@
         font-size: 1.65rem;
         line-height: 1.2;
         font-weight: 600;
+
+        @include bp1000 {
+            margin-right: 10px;
+        }
+    }
+
+    .bl-review {
+        font-size: 1rem;
+        padding: 0 3px 1px;
+        border: 1px solid #bbb;
+        color: #444;
+        opacity: .5;
+        display: block;
+        width: 36px;
+        margin-top: 7px;
+
+        @include bp1000 {
+            display: inline-block;
+            margin-top: 0;
+        }
     }
     
     .bl-total {

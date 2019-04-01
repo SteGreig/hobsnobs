@@ -25,7 +25,7 @@ function showInfo(data, tabletop) {
                 biscuitItem.innerHTML =
                 `
                     <td class="bl-num">${i+1}</td>
-                    <td class="bl-biscuit" data-insta="${ordered[i].insta}"><span class="bl-brand">${ordered[i].brand}</span> <span class="bl-biscuit-name">${ordered[i].biscuit_name}</span></td>
+                    <td class="bl-biscuit" data-insta="${ordered[i].insta}"><span class="bl-brand">${ordered[i].brand}</span> <span class="bl-biscuit-name">${ordered[i].biscuit_name}</span><span class="bl-review">review</span></td>
                     <td class="bl-taste"><span class="bl-emoji">🤤</span> ${ordered[i].taste}</td>
                     <td class="bl-texture"><span class="bl-emoji">🍪</span> ${ordered[i].texture}</td>
                     <td class="bl-health"><span class="bl-emoji">🚑</span> ${ordered[i].health}</td>
