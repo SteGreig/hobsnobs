@@ -14,8 +14,6 @@
     transform: translateX(-50%);
     z-index: 100;
     background: rgba(#000,.8);
-    -webkit-overflow-scrolling: touch;
-    overflow-y: scroll;
     @include flexbox;
 
     @include bp600 {
@@ -25,6 +23,8 @@
     &.active {
         opacity: 1;
         visibility: visible;
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
     }
 
     > div {
@@ -34,6 +34,7 @@
         @include justify-content(center);
         padding: 10px;
         margin: auto;
+        min-height: 600px;
     }
 
     .ins-post {
@@ -53,7 +54,7 @@
         width: 100%;
         max-width: 450px;
         background: #fff;
-        padding: 15px;
+        padding: 15px 15px 80px;
         white-space: pre-wrap;
 
         &:first-line {
@@ -63,6 +64,25 @@
         @include bp600 {
             padding: 30px;
         }
+    }
+}
+
+.loader {
+    width: 10px;
+    height: 60px;
+    border-top: 3px solid #888;
+    border-bottom: 3px solid #888;
+    animation: loader .8s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -5px;
+    margin-top: -30px;
+    z-index: 10;
+    display: none;
+
+    &.active {
+        display: inline-block;
     }
 }
 
@@ -138,5 +158,11 @@
         @include bp600 {
             display: none;
         }
+    }
+}
+
+@keyframes loader {
+    to {
+        transform: rotate(360deg);
     }
 }

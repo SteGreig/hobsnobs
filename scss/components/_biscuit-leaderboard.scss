@@ -6,6 +6,12 @@
     @include flexbox;
     @include justify-content(center);
     margin-bottom: 100px;
+    position: relative;
+    min-height: 350px;
+    
+    .loader {
+        top: 60%;
+    }
 
     > div {
         background: #fff;

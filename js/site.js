@@ -33,6 +33,8 @@ function showInfo(data, tabletop) {
                 `;
 
                 document.querySelector('.biscuit-leaderboard tbody').appendChild(biscuitItem);
+
+                document.querySelector('.loader').classList.remove('active');
                 
             }
         }
@@ -47,6 +49,7 @@ function showInfo(data, tabletop) {
         document.querySelector('body').classList.add('fixed');
         document.querySelector('.insta-modal').classList.add('active');
         document.querySelector('.modal-close').classList.add('active');
+        document.querySelector('.insta-modal .loader').classList.add('active');
 
         if(e.target.parentElement.classList.contains('biscuit-item')) {
             var insta = e.target.parentElement.children[1].dataset.insta
@@ -86,10 +89,11 @@ function showInfo(data, tabletop) {
 
     document.querySelector('.modal-close').addEventListener('click', function() {
         document.querySelector('.insta-modal').classList.remove('active');
-        document.querySelector('.insta-modal .ins-post').innerHTML = "";
+        document.querySelector('.insta-modal .ins-post').innerHTML = "<div class='loader'></div>";
         document.querySelector('.insta-modal .ins-review').innerHTML = "";
         document.querySelector('body').classList.remove('fixed');
         document.querySelector('.modal-close').classList.remove('active');
+        document.querySelector('.loader').classList.remove('active');
     });
 
     const ordered = data.sort((a, b) => a.overall_perc < b.overall_perc ? 1 : -1);
