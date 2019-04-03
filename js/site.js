@@ -1,20 +1,28 @@
+
+// --------------------------------------------------------------------------------------------------
+// Get data from Google Sheet
+// --------------------------------------------------------------------------------------------------
 function init() {
     Tabletop.init( { key: '1pt_A3Y9SOAcA-s4LIFDyxtyo1NvjM0gnQ9R3Jnmlwws',
     callback: showInfo,
     simpleSheet: true } )
 }
 
+// --------------------------------------------------------------------------------------------------
+// Show data from Google Sheet
+// --------------------------------------------------------------------------------------------------
 function showInfo(data, tabletop) {
 
+    // Sort table by taste, total score etc.
+    // ---------------------------------------------------------------------
     function sortTable(e) {
-
         const orderby = e.target.dataset.orderby;
-
         const ordered = data.sort((a, b) => a[orderby] < b[orderby] ? 1 : -1);
-
         buildTable(ordered);
     }
 
+    // Build and display the table
+    // ---------------------------------------------------------------------
     function buildTable(ordered) {
         document.querySelector('.biscuit-leaderboard tbody').innerHTML = "";
 
@@ -40,11 +48,15 @@ function showInfo(data, tabletop) {
         }
     }
 
+    // Active Class for table headers
+    // ---------------------------------------------------------------------
     function setOrderActive(el) {
         [...el.parentElement.children].forEach(sib => sib.classList.remove('order-active'));
         el.classList.add('order-active');
     }
 
+    // Instagram modal
+    // ---------------------------------------------------------------------
     function showInsta(e) {
         document.querySelector('body').classList.add('fixed');
         document.querySelector('.insta-modal').classList.add('active');
@@ -52,8 +64,10 @@ function showInfo(data, tabletop) {
         document.querySelector('.insta-modal .loader').classList.add('active');
 
         if(e.target.parentElement.classList.contains('biscuit-item')) {
+            // <tr> is the immediate parent so only need to go up one level
             var insta = e.target.parentElement.children[1].dataset.insta
         } else {
+            // <tr> is the grandparent so need to go up two levels
             var insta = e.target.parentElement.parentElement.children[1].dataset.insta
         }
 
@@ -81,12 +95,20 @@ function showInfo(data, tabletop) {
         request.send();
     }
 
+    // Get all table headers (<th>s) in the biscuit leaderboard
     const tableHeaders = document.querySelectorAll('.biscuit-leaderboard th');
+
+    // Sort table when <th>s are clicked
     tableHeaders.forEach(th => th.addEventListener('click', sortTable));
+
+    // Add/remove active class when <th>s are clicked
     tableHeaders.forEach(el => el.addEventListener('click', e => setOrderActive(el)));
 
+    // Show insta modal when the <tbody> section is clicked
+    // We can then pass through the event, and use event delegation to determine which <tr> was clicked
     document.querySelector('.bl-tbody').addEventListener('click', showInsta);
 
+    // Class management when modal is closed (removing active classes etc.)
     document.querySelector('.modal-close').addEventListener('click', function() {
         document.querySelector('.insta-modal').classList.remove('active');
         document.querySelector('.insta-modal .ins-post').innerHTML = "<div class='loader'></div>";
@@ -96,8 +118,20 @@ function showInfo(data, tabletop) {
         document.querySelector('.loader').classList.remove('active');
     });
 
+    // On initial page load, order by total score and build the table
     const ordered = data.sort((a, b) => a.overall_perc < b.overall_perc ? 1 : -1);
     buildTable(ordered);
+
+
+    // Register service worker
+    if('serviceWorker' in navigator) {
+        try {
+            navigator.serviceWorker.register('service-worker.js');
+            console.log('Service worker registered!');
+        } catch (error) {
+            console.log('Service worker failed');
+        }
+    }
 }
 
 window.addEventListener('DOMContentLoaded', init);

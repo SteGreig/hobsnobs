@@ -3,3 +3,13 @@ RewriteCond %{HTTP_HOST} !=thehobsnobs.vm
 RewriteCond %{HTTP_HOST} !=staging.ste.digital
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^thehobsnobs\.com [NC]
+RewriteRule ^(.*)$ http://www.thehobsnobs.com/$1 [L,R=301]
+</IfModule>
+
+
+
