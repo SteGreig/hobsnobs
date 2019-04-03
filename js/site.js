@@ -2,11 +2,12 @@
 // --------------------------------------------------------------------------------------------------
 // Get data from Google Sheet
 // --------------------------------------------------------------------------------------------------
-function init() {
-    Tabletop.init( { key: '1pt_A3Y9SOAcA-s4LIFDyxtyo1NvjM0gnQ9R3Jnmlwws',
+const tabletop = Tabletop.init( { key: '1pt_A3Y9SOAcA-s4LIFDyxtyo1NvjM0gnQ9R3Jnmlwws',
     callback: showInfo,
+    wait: true,
     simpleSheet: true } )
-}
+
+tabletop.fetch();
 
 // --------------------------------------------------------------------------------------------------
 // Show data from Google Sheet
@@ -133,5 +134,3 @@ function showInfo(data, tabletop) {
         }
     }
 }
-
-window.addEventListener('DOMContentLoaded', init);
