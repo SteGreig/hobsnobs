@@ -15,7 +15,7 @@ self.addEventListener('fetch', event => {
     const req = event.request;
     const url = new URL(req.url);
 
-    console.log("req: "req);
+    console.log("req: "+req);
     if(url.origin == location.origin) {
         event.respondWith(cacheFirst(req));
     } else {
