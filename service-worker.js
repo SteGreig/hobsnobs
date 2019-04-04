@@ -1,7 +1,9 @@
 const staticAssets = [
     './',
-    './css/critical.css',
-    './app-dist.js'
+    './css/main.css',
+    './app-dist.js',
+    './images/logo-hobsnobs.png',
+    './images/close.svg'
 ]
 
 self.addEventListener('install', async event => {
@@ -13,6 +15,7 @@ self.addEventListener('fetch', event => {
     const req = event.request;
     const url = new URL(req.url);
 
+    console.log("req: "req);
     if(url.origin == location.origin) {
         event.respondWith(cacheFirst(req));
     } else {
